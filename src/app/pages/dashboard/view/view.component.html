@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">Navbar</a>
+
+		<div class="" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<!-- add product -->
+				<li>
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+						data-bs-whatever="@mdo">Add product</button>
+
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">New message</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<form [formGroup]="form">
+										<div class="p-3">
+											<div class="mb-3">
+												<label for="productname" class="form-label">Product name</label>
+												<input type="text" class="form-control" id="productname"
+													formControlName="name">
+											</div>
+											<div class="mb-3 mt-4">
+												<label for="productprice" class="form-label">price</label>
+												<input type="text" class="form-control" id="productprice"
+													formControlName="price">
+											</div>
+										</div>
+
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-bs-dismiss="modal">Close</button>
+											<button type="submit" class="btn btn-primary" (click)="save()"
+												data-bs-dismiss="modal" aria-label="Close">Submit</button>
+										</div>
+									</form>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="ms-2">
+					<a class="btn btn-info" (click)="logout()"> log-out</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class=" mt-5">
+	<div class="container d-flex flex-wrap  flex-row " *ngIf="productARR.length>0">
+		<div class="col-2 card m-2" *ngFor="let item of productARR">
+			<div class="  m-1 rounded p-3">
+
+				<h6>{{item.name}}</h6>
+				<p>price : $ {{item.price}}</p>
+				<button class="btn btn-success">add</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container  d-flex justify-content-center align-items-center vh-100">
+    <div class="log-in col-6 p-5 rounded">
+        <form [formGroup]="form" class="p-2  " (ngSubmit)="onLogin()">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                <ng-container *ngFor="let error of errorMessages.email">
+                    <div class="error-container text-danger">
+                        <ng-container
+                            *ngIf=" fields('email')?.hasError(error.type) && (fields('email')?.dirty || fields('email')?.touched) ">
+                            {{ error.message }}
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+                <ng-container *ngFor="let error of errorMessages.password">
+                    <div class="error-container text-danger">
+                        <ng-container
+                            *ngIf=" fields('password')?.hasError(error.type) && (fields('password')?.dirty || fields('password')?.touched) ">
+                            {{ error.message }}
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div >
+            
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </form>
+    </div>
+</div>
